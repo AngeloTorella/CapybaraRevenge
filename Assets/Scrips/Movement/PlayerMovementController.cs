@@ -104,11 +104,11 @@ public class PlayerMovementController : MonoBehaviour
         //actualizar direccion sprite
         if (direccion == 1)
         {
-            spriteRenderer.flipX = false;
+            spriteRenderer.flipX = true;
         }
         else if (direccion == -1)
         {
-            spriteRenderer.flipX = true;
+            spriteRenderer.flipX = false;
         }
 
         //Movimiento horizontal
