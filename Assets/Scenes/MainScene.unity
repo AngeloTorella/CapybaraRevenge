@@ -222,9 +222,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f877af36f8b822846bff25a58d3c481c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shooterModel: {fileID: 11400000, guid: e842b6bccb8d4b143bfbd94cbed09589, type: 2}
+  weaponModel: {fileID: 11400000, guid: e842b6bccb8d4b143bfbd94cbed09589, type: 2}
   bulletSpawnPoint: {fileID: 1969883127}
-  player: {fileID: 1944465230}
+  player: {fileID: 903479142}
   gunOffset: {x: 0, y: 0, z: 0}
   followSpeed: 0.05
 --- !u!114 &181518645
@@ -1662,6 +1662,7 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 588749420}
   - {fileID: 878787424}
+  - {fileID: 181518643}
   - {fileID: 1882714849}
   - {fileID: 5272904709426371128}
   - {fileID: 1012390877}
