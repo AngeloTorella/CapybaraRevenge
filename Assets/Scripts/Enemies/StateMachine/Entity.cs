@@ -14,15 +14,15 @@ public class Entity : MonoBehaviour
     public Animator anim { get; private set; }   
     public Rigidbody2D  rb { get; private set; }
 
+    public AnimationToStateMachine atsm {get; private set;}
 
+    //-- GAME OBJECTS DEPENDENCIES --//
     [SerializeField]
     private Transform wallCheck;
     [SerializeField]
     private Transform ledgeCheck;
     [SerializeField]
     private Transform PlayerCheck;
-
-
     private Vector2 velocityWorkspace;
 
     public virtual void Start()
@@ -31,6 +31,7 @@ public class Entity : MonoBehaviour
 
         rb = this.GetComponent<Rigidbody2D>();
         anim = this.GetComponent<Animator>();
+        atsm = this.GetComponent<AnimationToStateMachine>();
 
         stateMachine = new FiniteStateMachine();
     }
@@ -71,13 +72,22 @@ public class Entity : MonoBehaviour
         return Physics2D.Raycast(PlayerCheck.position, this.transform.right, entityData.MaxAgroDistance, entityData.whatIsPlayer);
     }
 
+    /// <summary>
+    /// Esta funcion se encarga de verificar si el player se encuentra dentro del rango de ataque del enemigo
+    /// </summary>
+    /// <returns></returns>
+    public virtual bool CheckPlayerInCloseRangeAction(){
+        //Que es el Layer Mask
+        return Physics2D.Raycast(PlayerCheck.position, this.transform.right, entityData.CloseRangeActionDistance, entityData.whatIsPlayer);
+    }
+
     public virtual void Flip() 
     {
         facingDirection *= -1;
         this.transform.Rotate(0f, 180f, 0f);
     }
 
-    private void OnDrawGizmos()
+    public virtual void OnDrawGizmos()
     {
         Gizmos.DrawLine(wallCheck.position, wallCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.wallCheckDistance));
         Gizmos.DrawLine(ledgeCheck.position, ledgeCheck.position + (Vector3)(Vector2.down * entityData.ledgeCheckDistance));
