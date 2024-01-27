@@ -79,7 +79,7 @@ public class LookForPlayerState : State
         base.PhysicsUpdate();
     }
 
-    public void SetFlipInmediately(bool flip) 
+    public void SetTurnInmediately(bool flip) 
     { 
         TurnImmediately = flip;
     }
