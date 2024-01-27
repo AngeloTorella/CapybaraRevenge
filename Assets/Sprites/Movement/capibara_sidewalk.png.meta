@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 467c2724f60ff844e89ce9fc4ec509e4
+guid: a1d5293e48882d2488982cebf6dcc489
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,7 +136,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: capibara_jumping_0
+      name: capibara_sidewalk_0
       rect:
         serializedVersion: 2
         x: 0
@@ -150,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a9ac1e8ea2816f4aa5a7cf1d904a775
-      internalID: -2010368535
+      spriteID: beb770ee96ee9fe4cb0cbe8251bcc889
+      internalID: 918090335
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: capibara_jumping_1
+      name: capibara_sidewalk_1
       rect:
         serializedVersion: 2
         x: 32
@@ -171,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a02acf5c3a30c24da3ae43244b7ff43
-      internalID: -272650758
+      spriteID: 3700c1ff2ffbc6e4b8db7fc5f68fdbcd
+      internalID: 1742490893
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: capibara_jumping_2
+      name: capibara_sidewalk_2
       rect:
         serializedVersion: 2
         x: 64
@@ -192,14 +192,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e3065ba56571b64bb29c7bce38f68c0
-      internalID: 298661558
+      spriteID: 3987eaa37b5ff4540bee92c87414dad7
+      internalID: 1961705079
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: capibara_jumping_3
+      name: capibara_sidewalk_3
       rect:
         serializedVersion: 2
         x: 96
@@ -213,8 +213,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d56e9ed6d6312c469dbdc28580c6bf1
-      internalID: -1255938627
+      spriteID: e97a5deb9f9c70842b9b759888b544a4
+      internalID: 1539914693
       vertices: []
       indices: 
       edges: []
@@ -230,10 +230,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      capibara_jumping_0: -2010368535
-      capibara_jumping_1: -272650758
-      capibara_jumping_2: 298661558
-      capibara_jumping_3: -1255938627
+      capibara_sidewalk_0: 918090335
+      capibara_sidewalk_1: 1742490893
+      capibara_sidewalk_2: 1961705079
+      capibara_sidewalk_3: 1539914693
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

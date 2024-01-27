@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 467c2724f60ff844e89ce9fc4ec509e4
+guid: 351e6beae24a17d45ae5d9daad102625
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,7 +136,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: capibara_jumping_0
+      name: capibara_falling_0
       rect:
         serializedVersion: 2
         x: 0
@@ -150,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a9ac1e8ea2816f4aa5a7cf1d904a775
-      internalID: -2010368535
+      spriteID: 5411fdf62112a8d448bce65279cc316d
+      internalID: -1527672512
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: capibara_jumping_1
+      name: capibara_falling_1
       rect:
         serializedVersion: 2
         x: 32
@@ -171,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a02acf5c3a30c24da3ae43244b7ff43
-      internalID: -272650758
+      spriteID: 5f42ddbf923f03849b76f5d95b9aa50e
+      internalID: 1502139512
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: capibara_jumping_2
+      name: capibara_falling_2
       rect:
         serializedVersion: 2
         x: 64
@@ -192,14 +192,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e3065ba56571b64bb29c7bce38f68c0
-      internalID: 298661558
+      spriteID: b32bc4d50eae0654e9a9303582f015a3
+      internalID: 414077953
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: capibara_jumping_3
+      name: capibara_falling_3
       rect:
         serializedVersion: 2
         x: 96
@@ -213,8 +213,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d56e9ed6d6312c469dbdc28580c6bf1
-      internalID: -1255938627
+      spriteID: 26420b28f7046b54fa262070c91f2bf3
+      internalID: 791836042
       vertices: []
       indices: 
       edges: []
@@ -230,10 +230,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      capibara_jumping_0: -2010368535
-      capibara_jumping_1: -272650758
-      capibara_jumping_2: 298661558
-      capibara_jumping_3: -1255938627
+      capibara_falling_0: -1527672512
+      capibara_falling_1: 1502139512
+      capibara_falling_2: 414077953
+      capibara_falling_3: 791836042
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
