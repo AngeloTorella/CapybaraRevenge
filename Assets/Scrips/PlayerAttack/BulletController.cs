@@ -5,20 +5,16 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    // Start is called before the first frame update
-    void Start()
-    {
-        speed = 10;
-    }
+    [SerializeField] private BulletModel bulletData;
 
     // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        transform.Translate(speed * Time.deltaTime * transform.right);
+        transform.Translate(bulletData.getBulletSpeed() * Time.deltaTime * transform.right);
     }
 
     void OnCollisionEnter2D (Collision2D collision) {
-       Destroy(gameObject);
+        if (!collision.gameObject.CompareTag("Player"))
+            Destroy(this.gameObject);
     } 
 }
