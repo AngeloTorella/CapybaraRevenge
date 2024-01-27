@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -7,7 +8,7 @@ public class EnemyExample : MonoBehaviour
 {
 
     public Transform target;
-    public float enemySpeed;
+    public float enemySpeed = 0.5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,11 +32,23 @@ public class EnemyExample : MonoBehaviour
         Vector3 enemyPosition = transform.position;
         Vector3 targetPosition = target.position;
 
+        //Move towards
         
+
+
+
+        Debug.Log("Posision del target: " + MathF.Round(targetPosition.x) );
+        Debug.Log("Posicion del Enemigo: " + MathF.Round(enemyPosition.x));
         transform.position = Vector3.Lerp(enemyPosition, targetPosition, Time.deltaTime * enemySpeed);
-        if (enemyPosition == targetPosition){
-            Vector3 data = new Vector3(-1f,1f,1f);
-            target.position = target.position.x * data;
+        
+        
+        
+        
+        if (MathF.Round(enemyPosition.x) == MathF.Round(targetPosition.x)){
+            
+            
+            Debug.Log("Entre a mi condicion: ");
+
         }
     }
 }
