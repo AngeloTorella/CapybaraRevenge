@@ -11,4 +11,8 @@ public interface IAnimationController
     public void Wall(bool wallBool);
 
     public void Roll(bool rollBool);
+
+    public void Save(bool save);
+
+    public void Damage(bool damage);
 }

@@ -30,4 +30,14 @@ public class PlayerAnimationController : MonoBehaviour, IAnimationController
     {
         _animator.SetBool("Roll", rb);
     }
+
+    public void Save(bool save)
+    {
+        _animator.SetBool("Save", save);
+    }
+    
+    public void Damage(bool damage)
+    {
+        _animator.SetBool("Damage", damage);
+    }
 }

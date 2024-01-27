@@ -202,6 +202,7 @@ MonoBehaviour:
   wallSensorT: {fileID: 4365893021599564227}
   largo: 1
   ancho: 0.18
+  playerPrefab: {fileID: 1050701346591627286}
 --- !u!114 &5370236997394576730
 MonoBehaviour:
   m_ObjectHideFlags: 0
