@@ -105,6 +105,10 @@ public class PlayerMovementController : MonoBehaviour
 
     void Update()
     {
+        if (rb2D.velocity.y < -100)
+        {
+            Die();
+        }
         animationController.Roll(isRolling);
 
         if (isRolling)
