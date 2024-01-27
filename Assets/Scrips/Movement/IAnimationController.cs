@@ -9,4 +9,6 @@ public interface IAnimationController
     public void Run(float runSpeed);
 
     public void Wall(bool wallBool);
+
+    public void Roll(bool rollBool);
 }

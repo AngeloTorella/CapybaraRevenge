@@ -78,6 +78,8 @@ public class PlayerMovementController : MonoBehaviour
 
     void Update()
     {
+        animationController.Roll(isRolling);
+
         if (isRolling)
             return;
 

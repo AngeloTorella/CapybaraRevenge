@@ -25,4 +25,9 @@ public class PlayerAnimationController : MonoBehaviour, IAnimationController
     {
         _animator.SetBool("Wall", wb);
     }
+
+    public void Roll(bool rb)
+    {
+        _animator.SetBool("Roll", rb);
+    }
 }

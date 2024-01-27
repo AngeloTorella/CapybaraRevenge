@@ -1159,6 +1159,10 @@ PrefabInstance:
       propertyPath: largo
       value: 1.81
       objectReference: {fileID: 0}
+    - target: {fileID: 2487745377652287474, guid: 89ceb7a8a01f6364fbb6db1b6e663ec1, type: 3}
+      propertyPath: rollForce
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 7208868596400692004, guid: 89ceb7a8a01f6364fbb6db1b6e663ec1, type: 3}
       propertyPath: m_Radius
       value: 0.458009
