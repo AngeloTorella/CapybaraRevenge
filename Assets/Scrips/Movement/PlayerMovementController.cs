@@ -45,14 +45,11 @@ public class PlayerMovementController : MonoBehaviour
 
     private bool isDamage;
 
-
-    public void Awake()
+    private void Initialize()
     {
         this.rb2D = GetComponent<Rigidbody2D>();
         this.spriteRenderer = GetComponent<SpriteRenderer>();
         this.animationController = GetComponent<IAnimationController>();
-        
-        this.saveManager = FindObjectOfType<SaveManager>();
         this.playerCollider2D = GetComponent<Collider2D>();
 
         this.isGrounded = true;
@@ -71,6 +68,11 @@ public class PlayerMovementController : MonoBehaviour
         {
             Debug.LogError("No Collider2D component found on this GameObject.");
         }
+    }
+    public void Awake()
+    {
+        this.saveManager = FindObjectOfType<SaveManager>();
+        Initialize();
     }
     void Start()
     {
@@ -252,12 +254,15 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Die()
     {
-        // Destruye el jugador
-        Destroy(gameObject);
-
-        // Recrea el jugador en la última posición guardada
+        // Carga la última posición guardada
         Vector2 lastSavedPosition = saveManager.LoadGame();
-        PlayerMovementController newPlayer = Instantiate(playerPrefab, lastSavedPosition, Quaternion.identity).GetComponent<PlayerMovementController>();
+
+        // Teletransporta al jugador a la última posición guardada
+        transform.position = lastSavedPosition;
+
+        // Restablece el estado de daño del jugador
+        animationController.Damage(false);
+        isDamage = false;
     }
 
     IEnumerator Damage()
