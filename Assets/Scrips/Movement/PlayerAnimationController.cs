@@ -6,7 +6,7 @@ public class PlayerAnimationController : MonoBehaviour, IAnimationController
 {
     private Animator _animator;
 
-    private void Start()
+    private void Awake()
     {
         _animator = GetComponent<Animator>();
     }
@@ -29,5 +29,15 @@ public class PlayerAnimationController : MonoBehaviour, IAnimationController
     public void Roll(bool rb)
     {
         _animator.SetBool("Roll", rb);
+    }
+
+    public void Save(bool save)
+    {
+        _animator.SetBool("Save", save);
+    }
+    
+    public void Damage(bool damage)
+    {
+        _animator.SetBool("Damage", damage);
     }
 }

@@ -22,7 +22,10 @@ public class PlayerMovementController : MonoBehaviour
 
     [SerializeField] private float largo = 1.0f;
     [SerializeField] private float ancho = 1.0f;
+    private Collider2D playerCollider2D;
 
+    private SaveManager saveManager;
+    [SerializeField] private GameObject playerPrefab;
     private Rigidbody2D     rb2D;
     private SpriteRenderer  spriteRenderer;
 
@@ -37,12 +40,17 @@ public class PlayerMovementController : MonoBehaviour
 
     private float speed;
 
+    private bool isSave;
+    private bool isLoad;
 
-    void Start()
+    private bool isDamage;
+
+    private void Initialize()
     {
         this.rb2D = GetComponent<Rigidbody2D>();
         this.spriteRenderer = GetComponent<SpriteRenderer>();
         this.animationController = GetComponent<IAnimationController>();
+        this.playerCollider2D = GetComponent<Collider2D>();
 
         this.isGrounded = true;
         this.isWalled = true;
@@ -51,7 +59,26 @@ public class PlayerMovementController : MonoBehaviour
         this.isRollable = true;
 
         this.direccion = 1;
-
+        // Asegúrate de que el collider esté habilitado
+        if (this.playerCollider2D != null)
+        {
+            this.playerCollider2D.enabled = true;
+        }
+        else
+        {
+            Debug.LogError("No Collider2D component found on this GameObject.");
+        }
+    }
+    public void Awake()
+    {
+        this.saveManager = FindObjectOfType<SaveManager>();
+        Initialize();
+    }
+    void Start()
+    {
+        
+        // Guarda la posición actual del jugador y el prefab del jugador
+        saveManager.SaveGame(transform.position);
     }
 
     void FixedUpdate()
@@ -78,6 +105,10 @@ public class PlayerMovementController : MonoBehaviour
 
     void Update()
     {
+        if (rb2D.velocity.y < -100)
+        {
+            Die();
+        }
         animationController.Roll(isRolling);
 
         if (isRolling)
@@ -132,6 +163,7 @@ public class PlayerMovementController : MonoBehaviour
         }
 
         //Roll
+
         if (Input.GetKeyDown(KeyCode.LeftShift) && isGrounded && isRollable)
         {
             isRolling = true;
@@ -139,6 +171,51 @@ public class PlayerMovementController : MonoBehaviour
             StartCoroutine(Roll());
         }
 
+        // Save
+        if (isSave && Input.GetKeyDown(KeyCode.E))
+        {
+            animationController.Save(true);
+            StartCoroutine(Save());
+        }
+        else
+        {
+            animationController.Save(false);
+        }
+
+        
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("SavePoint"))
+        {
+            isSave = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("SavePoint"))
+        {
+            isSave = false;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            isDamage = true;
+            animationController.Damage(true);
+
+            // Inicia la coroutine para manejar la muerte del jugador
+            StartCoroutine(Damage());
+        }
+        else 
+        {
+            isDamage = false;
+            animationController.Damage(false);
+        }
     }
 
     private void OnDrawGizmos()
@@ -165,5 +242,42 @@ public class PlayerMovementController : MonoBehaviour
         isRolling = false;
         yield return new WaitForSeconds(rollDelay);
         isRollable = true ;
+    }
+
+    IEnumerator Save()
+    {
+        Debug.Log("Guardando...");
+
+        // Guarda la posición actual del jugador y el prefab del jugador
+        saveManager.SaveGame(transform.position);
+        // Espera a que la animación de guardado termine
+        yield return new WaitForSeconds(2f);
+
+        isSave = false;
+    }
+
+    private void Die()
+    {
+        // Carga la última posición guardada
+        Vector2 lastSavedPosition = saveManager.LoadGame();
+
+        // Teletransporta al jugador a la última posición guardada
+        transform.position = lastSavedPosition;
+
+        // Restablece el estado de daño del jugador
+        animationController.Damage(false);
+        isDamage = false;
+    }
+
+    IEnumerator Damage()
+    {
+        // Espera un segundo para que la animación de daño se complete
+        yield return new WaitForSeconds(.5f);
+
+        isDamage = false;
+        animationController.Damage(false);
+
+        // Llama a la función Die
+        Die();
     }
 }
