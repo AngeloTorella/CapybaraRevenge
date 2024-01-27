@@ -8,10 +8,18 @@ using UnityEngine;
 /// </summary>
 public class FiniteStateMachine
 {
-   public State currentState {get; private set;}
+    public State currentState { get; private set; }
 
-   public void Initialize(State startingState){
-    //Primer Estado al iniciar el juego
-    currentState = startingState;
-   }
+    public void Initialize(State startingState)
+    {
+        currentState = startingState;
+        currentState.Enter();
+    }
+
+    public void ChangeState(State newState)
+    {
+        currentState.Exit();
+        currentState = newState;
+        currentState.Enter();
+    }
 }
