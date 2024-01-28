@@ -123,6 +123,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &199030058
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3564412503804539725, guid: 4d82dc4156be8ac428d3ab098fdcfd0b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564412503804539725, guid: 4d82dc4156be8ac428d3ab098fdcfd0b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564412503804539725, guid: 4d82dc4156be8ac428d3ab098fdcfd0b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564412503804539725, guid: 4d82dc4156be8ac428d3ab098fdcfd0b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564412503804539725, guid: 4d82dc4156be8ac428d3ab098fdcfd0b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564412503804539725, guid: 4d82dc4156be8ac428d3ab098fdcfd0b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564412503804539725, guid: 4d82dc4156be8ac428d3ab098fdcfd0b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564412503804539725, guid: 4d82dc4156be8ac428d3ab098fdcfd0b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564412503804539725, guid: 4d82dc4156be8ac428d3ab098fdcfd0b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564412503804539725, guid: 4d82dc4156be8ac428d3ab098fdcfd0b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064211396473245642, guid: 4d82dc4156be8ac428d3ab098fdcfd0b, type: 3}
+      propertyPath: m_Name
+      value: Enemy1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d82dc4156be8ac428d3ab098fdcfd0b, type: 3}
 --- !u!1 &271743340
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,7 +189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 271743341}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: MeleeAttackPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +220,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 863293516}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: PlayerCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,7 +343,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1133475499}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: LedgeCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +377,7 @@ GameObject:
   - component: {fileID: 1366656796}
   - component: {fileID: 1366656798}
   - component: {fileID: 1366656799}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -475,7 +532,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1458512551}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: WallCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -508,7 +565,7 @@ GameObject:
   - component: {fileID: 1553151480}
   - component: {fileID: 1553151481}
   - component: {fileID: 1553151482}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: Target
   m_TagString: Player
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -524,7 +581,7 @@ Transform:
   m_GameObject: {fileID: 1553151479}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.84, y: 7.89, z: 0}
+  m_LocalPosition: {x: -1.62, y: 5.45, z: 0}
   m_LocalScale: {x: 2.0625, y: 1.8875, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -707,13 +764,13 @@ GameObject:
   - component: {fileID: 1743893299}
   - component: {fileID: 1743893300}
   - component: {fileID: 1743893301}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: BasicEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1743893294
 Transform:
   m_ObjectHideFlags: 0
@@ -924,7 +981,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1798191267}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: TouchDamageCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -955,3 +1012,4 @@ SceneRoots:
   - {fileID: 1366656797}
   - {fileID: 1553151480}
   - {fileID: 1574335276}
+  - {fileID: 199030058}
