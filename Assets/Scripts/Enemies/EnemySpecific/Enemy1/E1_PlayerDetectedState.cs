@@ -26,7 +26,8 @@ public class E1_PlayerDetected : PlayerDetectedState
         base.LogicUpdate();
 
 
-        if(performCloseRangeAction){
+        if(performCloseRangeAction)
+        {
             stateMachine.ChangeState(enemy.meleeAttackState);
         }else if (performLongRangeAction)
         {
@@ -35,6 +36,10 @@ public class E1_PlayerDetected : PlayerDetectedState
         else if (!isPlayerInMaxAgroRange)
         {
             stateMachine.ChangeState(enemy.lookForPlayerState);
+        }else if (!isDetectingLedge)
+        {
+            entity.Flip();
+            stateMachine.ChangeState(enemy.moveState);
         }
        
     }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy1 : Entity
@@ -11,8 +12,8 @@ public class Enemy1 : Entity
     public E1_PlayerDetected playerDetectedState { get; private set; }
     public E1_ChargeState chargeState { get; private set; }
     public E1_LookForPlayerState lookForPlayerState { get; private set; }
-
     public E1_MeeleAttackState meleeAttackState {get; private set;}
+    public E1_DeadState deadState { get; private set; }
 
     //-- STATES DATA OBJECTS --//
     [SerializeField]
@@ -25,9 +26,11 @@ public class Enemy1 : Entity
     private D_ChargeState ChargeData;
     [SerializeField]
     private D_LookForPlayerState LookForPlayerStateData;
-
     [SerializeField]
     private D_MeleeAttackState meleeAttackStateData;
+    [SerializeField]
+    private D_DeadState deadStateData;
+
     [SerializeField]
     private Transform meleeAttackPosition;
 
@@ -44,6 +47,7 @@ public class Enemy1 : Entity
         playerDetectedState = new E1_PlayerDetected(this, stateMachine,"playerDetected", playerDetectedData, this);
         chargeState = new E1_ChargeState(this, stateMachine, "charge", ChargeData, this);
         lookForPlayerState = new E1_LookForPlayerState(this, stateMachine,"lookForPlayer", LookForPlayerStateData, this);
+        deadState = new E1_DeadState(this, stateMachine,"dead", deadStateData, this);
         //Falta inicializar el ataque...
         meleeAttackState = new E1_MeeleAttackState(this,stateMachine, "meleeAttack", meleeAttackPosition,meleeAttackStateData,this);
 
@@ -54,5 +58,17 @@ public class Enemy1 : Entity
     {
         base.OnDrawGizmos();
         Gizmos.DrawWireSphere(meleeAttackPosition.position, meleeAttackStateData.attackRadius);
+    }
+
+    public override void Damage(float damage)
+    {
+        base.Damage(damage);
+
+        if (isDead)
+        {
+            stateMachine.ChangeState(deadState);
+
+            Destroy(gameObject);
+        }
     }
 }
