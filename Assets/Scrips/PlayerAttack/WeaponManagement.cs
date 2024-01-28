@@ -8,25 +8,35 @@ public class WeaponManagement : MonoBehaviour
     [SerializeField] List<GameObject>   weapons;
     [SerializeField] float              swapDelay;
 
-    private GameObject  currentWeapon;
+    private IGunLogicController gunInfo;
 
-    private float       currentTime;
+    private GameObject          currentWeapon;
 
-    private int         currentWeaponIndex;
+    private float               currentTime;
+
+    private int                 currentWeaponIndex;
+
+    private bool isReloading;
 
     private void Start()
     {
+        isReloading = false;
+
         currentTime = 0.0f;
 
         currentWeapon = weapons[0];
         currentWeaponIndex = 0;
+
+        gunInfo = currentWeapon.GetComponent<IGunLogicController>();
     }
 
     private void Update()
     {
         currentTime += Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.Q) && currentTime >= swapDelay)
+        isReloading = gunInfo.getBoolReload();
+
+        if (Input.GetKeyDown(KeyCode.Q) && currentTime >= swapDelay  && !isReloading)
         {
             currentWeaponIndex++;
             if (currentWeaponIndex > weapons.Count - 1)
@@ -34,6 +44,7 @@ public class WeaponManagement : MonoBehaviour
                 currentWeaponIndex = 0; 
             }
             SwapWeapon();
+            gunInfo = currentWeapon.GetComponent<IGunLogicController>();
         }
     }
 
