@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallCheckDistance: 0.9
   ledgeCheckDistance: 2
-  maxHealth: 150
+  maxHealth: 300
   MaxAgroDistance: 9
   MinAgroDistance: 5
   CloseRangeActionDistance: 1
