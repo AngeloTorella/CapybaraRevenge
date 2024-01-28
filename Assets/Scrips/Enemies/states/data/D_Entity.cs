@@ -16,6 +16,7 @@ public class D_Entity : ScriptableObject
     public float CloseRangeActionDistance = 1f;
 
     public LayerMask whatIsGround;
+    public LayerMask whatIsWall;
     public LayerMask whatIsPlayer;
 }
 

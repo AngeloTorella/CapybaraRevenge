@@ -50,7 +50,7 @@ public class MeleeAttackState : AttackState
         foreach (Collider2D collider in detectedObjects)
         {
             Debug.Log("Bajarle vida al objeto dentro del rango de ataque: ");
-            //collider.transform.SendMessage("Damage", attackDetails);
+            collider.GetComponent<PlayerMovementController>().takeDamage();
         }
     }
 }

@@ -280,4 +280,22 @@ public class PlayerMovementController : MonoBehaviour
         // Llama a la función Die
         Die();
     }
+
+    public void takeDamage() 
+    {
+        isDamage = true;
+        animationController.Damage(true);
+
+        // Inicia la coroutine para manejar la muerte del jugador
+        StartCoroutine(Damage());
+
+        Invoke(nameof(offDamage), 0.2f);
+    }
+
+
+    private void offDamage() 
+    {
+        isDamage = false;
+        animationController.Damage(false);
+    }
 }
