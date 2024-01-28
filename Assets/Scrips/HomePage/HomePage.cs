@@ -8,6 +8,7 @@ public class HomePage : MonoBehaviour
     [SerializeField] float pulseSpeed; // velocidad del pulso 
     [SerializeField] float pulseMax; // tamaño máximo del pulso
     [SerializeField] float pulseMin; // tamaño mínimo del pulso
+    [SerializeField] string nextSceneName; // el nombre de la próxima escena
 
     private Vector3 originalScale; // escala original del objeto
 
@@ -19,7 +20,7 @@ public class HomePage : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("VideoScene");
+        SceneManager.LoadScene(nextSceneName);
     }
 
     IEnumerator Pulse()
