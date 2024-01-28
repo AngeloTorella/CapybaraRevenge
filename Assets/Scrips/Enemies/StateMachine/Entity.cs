@@ -67,7 +67,7 @@ public class Entity : MonoBehaviour
 
     public virtual bool CheckWall() 
     {
-        return Physics2D.Raycast(wallCheck.position, -this.transform.right, entityData.wallCheckDistance, entityData.whatIsGround);
+        return Physics2D.Raycast(wallCheck.position, -this.transform.right, entityData.wallCheckDistance, entityData.whatIsWall);
     }
 
     public virtual bool CheckLedge()
