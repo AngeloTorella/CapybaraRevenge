@@ -29,12 +29,12 @@ public class WeaponModel : ScriptableObject
         return this.reloadTime;
     }
 
-    public float getMagazine()
+    public int getMagazine()
     {
         return this.magazine;
     }
 
-    public float getAmmoRecerve()
+    public int getAmmoRecerve()
     {
         return this.ammoRecerve;
     }
