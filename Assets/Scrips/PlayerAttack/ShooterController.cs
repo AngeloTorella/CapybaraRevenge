@@ -4,51 +4,75 @@ using UnityEngine;
 
 public class ShooterController : MonoBehaviour
 {
-    [SerializeField] private WeaponModel    weaponModel; // Referencia a la arma actual
-    [SerializeField] private Transform      bulletSpawnPoint;
-    [SerializeField] private Transform      player; // Referencia al jugador
-    [SerializeField] private Vector3        gunOffset; // Desplazamiento de la pistola
-    [SerializeField] private float          followSpeed = 1f; // Velocidad de seguimiento
+    [SerializeField] GameObject             bulletPrefab;
 
-    private float                           nextFireTime;
+    [SerializeField] Transform              bulletSpawn;
+    [SerializeField] Transform              gunT;
+    [SerializeField] Transform              playerT;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] BulletModel            bulletData;
+    [SerializeField] WeaponModel            weaponData;
+
+    [SerializeField] float                  gunFollowSpeed;
+
+    private SpriteRenderer      spriteRenderer;
+
+    private IGunLogicController gunInfo;
+
+    private float               timeSinceLastShoot;
+
+    private Vector3             targetRotation;
+    private Vector3             finalTarget;
+    private Vector3             gunOffset;
+
+    private bool                isReloading;
+
+    private void Start()
     {
-        //definir offset
-        gunOffset = new Vector3(0.7f, -0.2f, -1);
+        gunInfo = this.GetComponent<IGunLogicController>();
+
+        timeSinceLastShoot = weaponData.getFireRate();
+
+        gunOffset = new Vector3(0.7f, -0.2f, -1.0f);
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        bulletSpawnPoint.localRotation = transform.localRotation;
-    }
+        isReloading = gunInfo.getBoolReload();
 
-    void Update() 
-    {
-        if (Input.GetButtonDown("Fire1") && Time.time > nextFireTime){
-            shoot();
-            nextFireTime = Time.time + 1f / weaponModel.getFireRate();
-        }
+        timeSinceLastShoot += Time.deltaTime;
 
         // Hacer que el ShooterController siga al jugador con un retraso
-        Vector3 targetPosition = player.position + gunOffset;
-        transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed);
+        Vector3 targetPosition = playerT.position + gunOffset;
+        transform.position = Vector3.Lerp(transform.position, targetPosition, gunFollowSpeed);
+
+        targetRotation = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
+        float angle = Mathf.Atan2(targetRotation.y, targetRotation.x) * Mathf.Rad2Deg;
+
+        bulletSpawn.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, angle));
+        gunT.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, angle));
+
+        if (angle > 90 || angle < -90)
+            spriteRenderer.flipY = true;
+        else
+            spriteRenderer.flipY = false;
+
+        if (Input.GetMouseButton(0) && timeSinceLastShoot >= weaponData.getFireRate() && !isReloading)
+        {
+            Shoot();
+            gunInfo.Shoot();
+            timeSinceLastShoot = 0.0f;
+        }
+            
     }
 
-    void shoot () {
-        // Instantiate the bullet at the position and rotation of the bulletSpawnPoint
-        GameObject bullet = Instantiate(weaponModel.getBulletPrefab(), bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-
-    }
-
-    void OnDrawGizmos () {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position, 0.1f);
-
-        
-        // Draw a Gizmo at the bulletSpawnPoint
-        Gizmos.color = Color.blue;
-        Gizmos.DrawCube(bulletSpawnPoint.position, Vector3.one * 0.1f);
+    private void Shoot()
+    {
+        GameObject Ball = Instantiate(bulletPrefab, bulletSpawn.position, transform.rotation, transform.parent);
+        targetRotation.z = 0.0f;
+        finalTarget = (targetRotation - transform.position).normalized;
+        Ball.GetComponent<Rigidbody2D>().AddForce(finalTarget * bulletData.getBulletSpeed(), ForceMode2D.Impulse);
     }
 }
