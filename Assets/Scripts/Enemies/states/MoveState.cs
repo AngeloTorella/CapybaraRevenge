@@ -40,6 +40,8 @@ public class MoveState : State
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+
+        entity.SetVelocity(stateData.movementSpeed);
     }
 
     public override void PhysicsUpdate()

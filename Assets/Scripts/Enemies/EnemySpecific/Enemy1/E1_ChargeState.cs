@@ -30,21 +30,22 @@ public class E1_ChargeState : ChargeState
     {
         base.LogicUpdate();
 
-        if (!isDetectingLedge || isDetectingWall) 
+        if (!isDetectingLedge || isDetectingWall)
         {
             stateMachine.ChangeState(enemy.lookForPlayerState);
         }
-        else if (isChargeTimeOver) 
+        else if (performCloseRangeAction)
         {
-            if(performCloseRangeAction){
-                stateMachine.ChangeState(enemy.meleeAttackState);
-                
-            } else if (isPlayerInMinAgroRange)
-            { 
+            stateMachine.ChangeState(enemy.meleeAttackState);
+        }
+        else if (isChargeTimeOver)
+        {
+            if (isPlayerInMaxAgroRange)
+            {
                 //Este if deberia ser para el ataque, pero aun no he agregado las variables acorde al ataque
                 stateMachine.ChangeState(enemy.chargeState);
             }
-            else 
+            else
             {
                 //Este if lo agregue yo para que funcione bien la perdida del agro, lo puedes quitar si lo ves bien con la lista de reproduccion
                 stateMachine.ChangeState(enemy.lookForPlayerState);

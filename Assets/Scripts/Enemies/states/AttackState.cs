@@ -9,9 +9,6 @@ public class AttackState : State
     protected bool isAnimationFinished;
     protected bool isPlayerInMinAgroRange;
 
-    //LongRange Action
-    //Short Range Action
-
     public AttackState(Entity etity, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition) : base(etity, stateMachine, animBoolName)
     {
         this.attackPosition = attackPosition;
@@ -27,9 +24,9 @@ public class AttackState : State
     {
         base.Enter();
 
-        entity.atsm.attackState = this;//Esto esta supe raro...
+        entity.atsm.attackState = this;
         isAnimationFinished = false;
-        entity.SetVelocity(0);//Esta es la funcion que hace que se mueva el enemigo
+        entity.SetVelocity(0);
     }
 
     public override void Exit()

@@ -51,10 +51,6 @@ public class MeleeAttackState : AttackState
         {
             Debug.Log("Bajarle vida al objeto dentro del rango de ataque: ");
             //collider.transform.SendMessage("Damage", attackDetails);
-            //TODO: Implementar funcionalidad de proprocione los valores del damage al player
         }
-    
-    
     }
-
 }
