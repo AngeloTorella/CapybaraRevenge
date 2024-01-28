@@ -5,16 +5,21 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    [SerializeField] private BulletModel bulletData;
+    [SerializeField] BulletModel bulletData;
 
-    // Update is called once per frame
-    private void FixedUpdate()
+    private void Start()
     {
-        transform.Translate(bulletData.getBulletSpeed() * Time.deltaTime * transform.right);
+        StartCoroutine(DestroyOnTime());
+    }
+
+    IEnumerator DestroyOnTime()
+    {
+        yield return new WaitForSeconds(bulletData.getBulletRange());
+        Destroy(this.gameObject);
     }
 
     void OnCollisionEnter2D (Collision2D collision) {
         if (!collision.gameObject.CompareTag("Player"))
             Destroy(this.gameObject);
-    } 
+    }
 }
