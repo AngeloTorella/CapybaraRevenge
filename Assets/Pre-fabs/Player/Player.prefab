@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6399110452379012998}
   - component: {fileID: 5306440791821330277}
   - component: {fileID: 4280704916927582437}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -195,15 +195,15 @@ MonoBehaviour:
   rollDelay: 0.6
   grounLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   wallLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   grounSensorT: {fileID: 2466347497748737761}
   wallSensorT: {fileID: 4591239032138522914}
   largo: 1.37
   ancho: 0.18
-  playerPrefab: {fileID: 1050701346591627286}
+  playerPrefab: {fileID: 0}
 --- !u!114 &4280704916927582437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 2339242569392292352}
   - component: {fileID: 5799222201567582701}
   - component: {fileID: 8419714846639342354}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: ReloadBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 56513673784395835}
   - component: {fileID: 1940976312800742723}
   - component: {fileID: 9175709597434571330}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -403,7 +403,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4591239032138522914}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: WallSensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -436,7 +436,7 @@ GameObject:
   - component: {fileID: 7343599733767355145}
   - component: {fileID: 3292929448406569098}
   - component: {fileID: 5934577749388599604}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -509,7 +509,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2466347497748737761}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: GroundSensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
