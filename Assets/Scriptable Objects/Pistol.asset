@@ -17,4 +17,6 @@ MonoBehaviour:
   reloadTime: 2
   magazine: 12
   ammoRecerve: 150
+  bulletsPerShot: 1
+  accuracy: 15
   bulletPrefab: {fileID: 1584527623896610994, guid: 892997fbc189eb84b987755e627119c4, type: 3}

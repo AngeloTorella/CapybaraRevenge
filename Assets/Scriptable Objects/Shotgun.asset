@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb857f5a1538f684e8871143c31c5737, type: 3}
-  m_Name: Uzi
+  m_Name: Shotgun
   m_EditorClassIdentifier: 
-  fireRate: 0.1
+  fireRate: 1
   weaponRecoil: 1
   reloadTime: 5
-  magazine: 30
+  magazine: 6
   ammoRecerve: 150
-  bulletsPerShot: 1
-  accuracy: 70
+  bulletsPerShot: 6
+  accuracy: 100
   bulletPrefab: {fileID: 1584527623896610994, guid: 892997fbc189eb84b987755e627119c4, type: 3}
