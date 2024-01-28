@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextSceneName: PlayerSave
-  delayInSeconds: 18
+  delayInSeconds: 24.5
 --- !u!1 &946865641
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,7 +711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 1951166281}
-  nextSceneName: 
+  nextSceneName: 26
 --- !u!1 &2056634261
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,7 +762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 2056634264}
-  audioClip: {fileID: 8300000, guid: f8aafb0ac3099304faec9719a6e27139, type: 3}
+  audioClip: {fileID: 8300000, guid: 10c0188420cdac64b97871e33ab88c52, type: 3}
   delayInSeconds: 0.25
 --- !u!82 &2056634264
 AudioSource:
