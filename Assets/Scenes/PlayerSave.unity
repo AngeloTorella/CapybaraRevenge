@@ -325,6 +325,14 @@ PrefabInstance:
       propertyPath: largo
       value: 1.84
       objectReference: {fileID: 0}
+    - target: {fileID: 3704360873062269657, guid: 89ceb7a8a01f6364fbb6db1b6e663ec1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 3704360873062269657, guid: 89ceb7a8a01f6364fbb6db1b6e663ec1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.99
+      objectReference: {fileID: 0}
     - target: {fileID: 7208868596400692004, guid: 89ceb7a8a01f6364fbb6db1b6e663ec1, type: 3}
       propertyPath: m_Radius
       value: 0.4764371
