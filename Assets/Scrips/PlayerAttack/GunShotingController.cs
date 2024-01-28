@@ -15,10 +15,13 @@ public class GunShotingController : MonoBehaviour, IGunLogicController
     private int maxAmmo;
     private int magazine;
 
+    private GunSoundController soundController;
+
     private bool isReloading;
 
     private void Awake()
     {
+        soundController = this.GetComponent<GunSoundController>();
         this.maxAmmo = weaponData.getMagazine();
         this.magazine = weaponData.getMagazine();
 
@@ -55,6 +58,8 @@ public class GunShotingController : MonoBehaviour, IGunLogicController
 
     private IEnumerator Relaod()
     {
+        StartCoroutine(soundController.Reload());
+
         fillImage.GetComponentInParent<Canvas>().enabled = true;
 
         fillImage.fillAmount = 0.0f;

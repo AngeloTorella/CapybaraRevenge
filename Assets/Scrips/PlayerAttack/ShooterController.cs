@@ -18,6 +18,7 @@ public class ShooterController : MonoBehaviour
     private SpriteRenderer      spriteRenderer;
 
     private IGunLogicController gunInfo;
+    private GunSoundController gunSoundController;
 
     private float               timeSinceLastShoot;
 
@@ -30,6 +31,7 @@ public class ShooterController : MonoBehaviour
     private void Start()
     {
         gunInfo = this.GetComponent<IGunLogicController>();
+        gunSoundController = this.GetComponent<GunSoundController>();
 
         timeSinceLastShoot = weaponData.getFireRate();
 
@@ -61,6 +63,7 @@ public class ShooterController : MonoBehaviour
 
         if (Input.GetMouseButton(0) && timeSinceLastShoot >= weaponData.getFireRate() && !isReloading)
         {
+            StartCoroutine(gunSoundController.Shoot());
             Shoot();
             gunInfo.Shoot();
             timeSinceLastShoot = 0.0f;
