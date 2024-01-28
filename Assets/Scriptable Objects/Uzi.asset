@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb857f5a1538f684e8871143c31c5737, type: 3}
   m_Name: Uzi
   m_EditorClassIdentifier: 
-  fireRate: 0.1
+  fireRate: 0.2
   weaponRecoil: 1
   reloadTime: 5
   magazine: 30

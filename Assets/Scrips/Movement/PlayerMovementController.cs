@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovementController : MonoBehaviour
@@ -13,12 +14,11 @@ public class PlayerMovementController : MonoBehaviour
 
     [SerializeField] private LayerMask grounLayer;
     [SerializeField] private LayerMask wallLayer;
+    [SerializeField] private LayerMask saveLayer;
 
     [SerializeField] private Transform grounSensorT;
     [SerializeField] private Transform wallSensorT;
 
-    [SerializeField] private IAnimationController animationController;
-    
 
     [SerializeField] private float largo = 1.0f;
     [SerializeField] private float ancho = 1.0f;
@@ -45,13 +45,18 @@ public class PlayerMovementController : MonoBehaviour
 
     private bool isDamage;
 
+    private IAnimationController animationController;
+    private PlayerSoundController soundController;
+
     private void Initialize()
     {
         this.rb2D = GetComponent<Rigidbody2D>();
         this.spriteRenderer = GetComponent<SpriteRenderer>();
         this.animationController = GetComponent<IAnimationController>();
+        this.soundController = GetComponent<PlayerSoundController>();
         this.playerCollider2D = GetComponent<Collider2D>();
 
+        this.isSave = false;
         this.isGrounded = true;
         this.isWalled = true;
         this.isWallJumping = false;
@@ -93,6 +98,9 @@ public class PlayerMovementController : MonoBehaviour
         //actualiza el estado del booleano isWalled cada frame
         isWalled = Physics2D.OverlapCircle(wallSensorT.position, 0.1f, wallLayer);
         Debug.Log("wall: " + isWalled.ToString());
+
+        isSave = Physics2D.OverlapCircle(transform.position, 0.1f, saveLayer);
+        Debug.Log("save: " + isSave.ToString());
 
         speed = playerMoveSpeed;
         if (rb2D.velocity.y < -0.1f)
@@ -144,8 +152,23 @@ public class PlayerMovementController : MonoBehaviour
             spriteRenderer.flipX = false;
         }
 
+        // Save
+        if (isSave && Input.GetKey(KeyCode.E))
+        {
+            animationController.Save(true);
+            StartCoroutine(Save());
+            Debug.Log("Entre");
+        }
+        else
+        {
+            animationController.Save(false);
+        }
+
         //Movimiento horizontal
         rb2D.velocity = new Vector2(inputX * speed, rb2D.velocity.y);
+
+        if (isSave)
+            return;
 
         // Salto
         if (Input.GetButtonDown("Jump") && !isRolling)
@@ -169,20 +192,9 @@ public class PlayerMovementController : MonoBehaviour
             isRolling = true;
             isRollable = false;
             StartCoroutine(Roll());
+            StartCoroutine(soundController.Roll());
         }
 
-        // Save
-        if (isSave && Input.GetKeyDown(KeyCode.E))
-        {
-            animationController.Save(true);
-            StartCoroutine(Save());
-        }
-        else
-        {
-            animationController.Save(false);
-        }
-
-        
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -223,6 +235,7 @@ public class PlayerMovementController : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(grounSensorT.position, new Vector2(largo, ancho));
         Gizmos.DrawWireSphere(wallSensorT.position, 0.1f);
+        Gizmos.DrawWireSphere(transform.position, 0.1f);
     }
 
     IEnumerator WallJump()
