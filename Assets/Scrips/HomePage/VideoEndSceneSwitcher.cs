@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class VideoEndSceneSwitcher : MonoBehaviour
 {
@@ -15,7 +16,15 @@ public class VideoEndSceneSwitcher : MonoBehaviour
 
     private void OnVideoEnded(VideoPlayer source)
     {
-        // Cargar la próxima escena cuando el video termine de reproducirse
+        // Iniciar una corrutina que cargará la próxima escena después de un retraso
+        StartCoroutine(LoadNextSceneAfterDelay());
+    }
+
+    private IEnumerator LoadNextSceneAfterDelay()
+    {
+        yield return new WaitForSeconds(20f); // esperar 16 segundos
+
+        // cargar la próxima escena
         SceneManager.LoadScene(nextSceneName);
     }
 }
