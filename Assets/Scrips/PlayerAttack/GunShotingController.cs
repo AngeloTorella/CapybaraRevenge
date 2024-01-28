@@ -34,6 +34,8 @@ public class GunShotingController : MonoBehaviour, IGunLogicController
         {
             fillImage.GetComponentInParent<Canvas>().enabled = false;
         }
+        weaponName.GetComponent<TextMeshProUGUI>().text = weaponData.name.ToString();
+        weaponAmmoInfo.GetComponent<TextMeshProUGUI>().text = magazine.ToString() + " / " + maxAmmo.ToString();
     }
 
     public void Shoot()
@@ -44,7 +46,6 @@ public class GunShotingController : MonoBehaviour, IGunLogicController
             this.isReloading = true;
             StartCoroutine(Relaod());
         }
-        weaponAmmoInfo.GetComponent<TextMeshProUGUI>().text = magazine.ToString() + " / " + maxAmmo.ToString();
     }
 
     public bool getBoolReload()
@@ -69,6 +70,5 @@ public class GunShotingController : MonoBehaviour, IGunLogicController
         fillImage.fillAmount = 1.0f;
         isReloading = false;
         magazine = maxAmmo;
-        weaponAmmoInfo.GetComponent<TextMeshProUGUI>().text = magazine.ToString() + " / " + maxAmmo.ToString();
     }
 }
