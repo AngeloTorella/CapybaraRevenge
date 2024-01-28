@@ -70,9 +70,26 @@ public class ShooterController : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject Ball = Instantiate(bulletPrefab, bulletSpawn.position, transform.rotation, transform.parent);
-        targetRotation.z = 0.0f;
-        finalTarget = (targetRotation - transform.position).normalized;
-        Ball.GetComponent<Rigidbody2D>().AddForce(finalTarget * bulletData.getBulletSpeed(), ForceMode2D.Impulse);
+        for (int i = 1; i <= weaponData.getBulletsPerShot(); i++)
+        {
+            GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, transform.rotation, transform.parent);
+
+            targetRotation.z = 0.0f;
+            finalTarget = (targetRotation - transform.position).normalized;
+
+            // Generar un ángulo aleatorio dentro del rango de desviación
+            float deviationAngle = Random.Range(-weaponData.getAccuracy(), weaponData.getAccuracy());
+
+            // Convertir el ángulo a radianes
+            float deviationAngleRad = deviationAngle * Mathf.Deg2Rad;
+
+            // Calcular la desviación aplicando el ángulo a la dirección original
+            Vector3 deviation = Quaternion.Euler(0f, deviationAngle, 0f) * finalTarget;
+
+            // Aplicar la desviación a la dirección final del objetivo
+            Vector3 finalDirection = finalTarget + deviation;
+
+            bullet.GetComponent<Rigidbody2D>().AddForce(finalDirection * bulletData.getBulletSpeed(), ForceMode2D.Impulse);
+        }
     }
 }

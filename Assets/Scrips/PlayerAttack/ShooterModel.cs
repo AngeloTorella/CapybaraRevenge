@@ -11,6 +11,8 @@ public class WeaponModel : ScriptableObject
 
     [SerializeField] private int        magazine;
     [SerializeField] private int        ammoRecerve;
+    [SerializeField] private int        bulletsPerShot;
+    [SerializeField] private float        accuracy;
 
     [SerializeField] private GameObject bulletPrefab;
 
@@ -42,5 +44,15 @@ public class WeaponModel : ScriptableObject
     public GameObject getBulletPrefab()
     {
         return this.bulletPrefab;
+    }
+
+    public int getBulletsPerShot()
+    {
+        return this.bulletsPerShot;
+    }
+
+    public float getAccuracy()
+    {
+        return this.accuracy;
     }
 }
