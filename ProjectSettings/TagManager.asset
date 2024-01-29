@@ -3,20 +3,24 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - SavePoint
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
+  - Ground
+  - Wall
+  - BackGround
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Bullet
+  - Enemy
+  - Savepoint
+  - Damagable
   - 
   - 
   - 
